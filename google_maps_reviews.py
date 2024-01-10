@@ -1,5 +1,11 @@
 import requests
+from dotenv import load_dotenv,find_dotenv
 import csv
+import os
+
+if load_dotenv(find_dotenv()):
+    with open('.env', 'r') as f:
+        api_key = f.read()
 
 def get_place_details(api_key, place_id):
     url = "https://maps.googleapis.com/maps/api/place/details/json"
@@ -21,7 +27,7 @@ def get_place_details(api_key, place_id):
         return None
 
 # Replace 'YOUR_API_KEY' with your actual API key
-api_key = 'AIzaSyBka9Gv9gUbdBu9w_Q7o5T9t0LBmS99DwE'
+
 place_id = 'ChIJbXqNVR9tEg0R7-ZX6o1Xe9U'
 
 result = get_place_details(api_key, place_id)
